@@ -1159,7 +1159,7 @@ a.has-text-light:focus {
 }
 
 .has-text-dark {
-  color: #413c58 !important;
+  color: #070a14 !important;
 }
 
 a.has-text-dark:hover,
@@ -1911,7 +1911,7 @@ a.box:active {
 .button.is-text {
   background-color: transparent;
   border-color: transparent;
-  color: #413c58;
+  color: #070a14;
   text-decoration: underline;
 }
 
@@ -3503,7 +3503,7 @@ fieldset[disabled] .button {
 .content h4,
 .content h5,
 .content h6 {
-  color: #363636;
+  color: #141c3a;
   font-weight: 600;
   line-height: 1.125;
 }
@@ -4798,7 +4798,7 @@ a.tag:hover {
 }
 
 .subtitle {
-  color: #413c58;
+  color: #070a14;
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.25;
@@ -12334,7 +12334,7 @@ h6 {
 .content h6 {
   font-family: "eurostile", sans-serif;
   font-weight: 800;
-  color: #413c58;
+  color: #141c3a;
 }
 
 .content p {
@@ -12353,7 +12353,7 @@ h6 {
 }
 
 .title {
-  color: #413c58;
+  color: #141c3a;
   font-weight: 800;
 }
 
@@ -12522,7 +12522,7 @@ hr {
 }
 
 .hero.is-white .title {
-  color: #413c58;
+  color: ##141c3a;
 }
 
 .avatar {
