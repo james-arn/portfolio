@@ -1,23 +1,119 @@
-function openModal1() {
-    // Set up content for modal 1
-    setupModalContent('Content for Project 1');
-    document.getElementById('myModal').style.display = "block";
+function trapFocusInModal(modal) {
+    var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+    var focusableElements = modal.querySelectorAll(focusableElementsString);
+    focusableElements = Array.prototype.slice.call(focusableElements);
+
+    var firstFocusableElement = focusableElements[0];
+    var lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+    function handleTabPress(e) {
+        var isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+        if (!isTabPressed) {
+            return;
+        }
+
+        if (e.shiftKey) { // if shift key pressed for shift + tab combination
+            if (document.activeElement === firstFocusableElement) {
+                lastFocusableElement.focus(); // add focus for the last focusable element
+                e.preventDefault();
+            }
+        } else { // if tab key is pressed
+            if (document.activeElement === lastFocusableElement) {
+                firstFocusableElement.focus(); // add focus for the first focusable element
+                e.preventDefault();
+            }
+        }
+    }
+
+    modal.addEventListener('keydown', handleTabPress);
+
+    setTimeout(function() {
+        lastFocusableElement.focus();
+    }, 100); 
 }
 
-function openModal2() {
-    // Set up content for modal 2
-    setupModalContent('Content for Project 2');
-    document.getElementById('myModal').style.display = "block";
+function setupModalBackgroundListener() {
+    var modal = document.getElementById('myModal');
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
 }
 
-function setupModalContent(content) {
-    // Assuming you have an element inside the modal for content
-    document.getElementById('modalContent').innerText = content;
+function setupEscapeKeyClose() {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            // Check if the modal is currently displayed
+            var modal = document.getElementById('myModal');
+            if (modal.style.display === 'flex') {
+                closeModal();
+            }
+        }
+    });
 }
 
-// Close modal function, assuming you have a close button inside your modal
+document.addEventListener('DOMContentLoaded', function() {
+    setupModalBackgroundListener();
+    setupEscapeKeyClose();
+});
+
+
+function openModal(projectId) {
+    let content;
+    switch (projectId) {
+        case 1:
+            content = {
+                title: "Co-op - Beautiful & Complex Booking Journey",
+                problem: "Description of the problem for Co-op...",
+                solution: "Description of the solution for Co-op...",
+                outcome: "Description of the outcome for Co-op...",
+                link: "http://link-to-coop-project.com"
+            };
+            break;
+        case 2:
+            content = {
+                title: "iJOPower - Solar Panel Configurator",
+                problem: "Description of the problem for ijo...",
+                solution: "Description of the solution for ijo...",
+                outcome: "Description of the outcome for ijo...",
+                link: "http://link-to-coop-project.com"
+            };
+            break;
+        case 3:
+            content = {
+                title: "CAA - Accessibility",
+                problem: "Description of the problem for CAA...",
+                solution: "Description of the solution for CAA...",
+                outcome: "Description of the outcome for CAA...",
+                link: "http://link-to-coop-project.com"
+            };
+            break;
+        // Add more cases as needed
+        default:
+            content = {
+                title: "Default Title",
+                problem: "Default problem description...",
+                solution: "Default solution description...",
+                outcome: "Default outcome description...",
+                link: "#"
+            };
+    }
+    updateModalContent(content);
+    const modal = document.getElementById('myModal');
+    trapFocusInModal(modal);
+    modal.style.display = "flex";
+}
+
+function updateModalContent(content) {
+    document.getElementById('modalTitle').innerText = content.title;
+    document.getElementById('modalProblem').innerText = content.problem;
+    document.getElementById('modalSolution').innerText = content.solution;
+    document.getElementById('modalOutcome').innerText = content.outcome;
+    document.getElementById('modalLink').href = content.link;
+}
+
 function closeModal() {
     document.getElementById('myModal').style.display = "none";
 }
-
-console.log('hit')

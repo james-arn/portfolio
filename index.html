@@ -93,7 +93,7 @@
             <figure class="image is-3by2"><img class="project-thumb" target= "_blank" src="images/MockUps/CoopThumbnail.jpg">
               <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">Co-op - Beautiful Brochureware & Complex Booking Journey</h1>
-                <button id="readMoreBtn1" onclick="openModal1()" class="button is-primary is-outlined is-rounded">
+                <button id="readMoreBtn1" onclick="openModal(1)" class="button is-primary is-outlined is-rounded">
                   <span>Read more</span>
                   <span class="icon">
                     <svg class="svg-inline--fa fa-angle-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
@@ -108,7 +108,7 @@
             <figure class="image is-3by2"><img class="project-thumb" target= "_blank" src="images/MockUps/IJOPowerThumbnail.jpg">
               <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">iJOPower - Solar Panel Configurator</h1>
-                <button id="readMoreBtn2" onclick="openModal2()" class="button is-primary is-outlined is-rounded">
+                <button id="readMoreBtn2" onclick="openModal(2)" class="button is-primary is-outlined is-rounded">
                   <span>Read more</span>
                   <span class="icon"><svg class="svg-inline--fa fa-angle-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
                     <path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"></path></svg><!-- <i class="fas fa-angle-right"></i> -->
@@ -122,7 +122,7 @@
             <figure class="image is-3by2"><img class="project-thumb"  src="images/MockUps/CAAThumbnail.jpg">
               <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">Canadian Automobile Association - Full Accessibility Compliance </h1>
-                <button id="readMoreBtn3" onclick="openModal3()" class="button is-primary is-outlined is-rounded">
+                <button id="readMoreBtn3" onclick="openModal(3)" class="button is-primary is-outlined is-rounded">
                   <span>Read more</span>
                   <span class="icon"><svg class="svg-inline--fa fa-angle-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
                     <path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"></path>
@@ -297,22 +297,31 @@
     </div>
   </footer>
 
-  <!-- Modals -->
   <div id="myModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modalContent">
-          <h2>Problem</h2>
-          <p>Description of the problem...</p>
-          <h2>Solution</h2>
-          <p>Description of the solution...</p>
-          <h2>Outcome</h2>
-          <p>Description of the outcome...</p>
-          <a href="your-website-link" class="optional-button">Visit Website</a>
+        <button class="close" onclick="closeModal()">&times;</button>
+        <h2 id="modalTitle" class="modal-card-title">Project Title</h2>
+        
+        <div class="modal-section">
+            <h3 class="modal-section-title">Problem</h3>
+            <p id="modalProblem" class="modal-section-content">Description of the problem...</p>
         </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">Solution</h3>
+            <p id="modalSolution" class="modal-section-content">Description of the solution...</p>
+        </div>
+
+        <div class="modal-section">
+            <h3 class="modal-section-title">Outcome</h3>
+            <p id="modalOutcome" class="modal-section-content">Description of the outcome...</p>
+        </div>
+
+        <a id="modalLink" href="" class="button is-primary">Visit Website</a>
     </div>
-    
 </div>
+
+
 <script src="index.js"></script>
 </body>
 </html>
