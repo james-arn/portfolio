@@ -127,8 +127,7 @@ table {
   border-spacing: 0;
 }
 
-/* Modal overall style */
-/* Modal overall style */
+/* MODAL STYLES */
 .modal {
   display: none; /* Hidden by default */
   position: fixed;
@@ -145,7 +144,6 @@ table {
   animation: fadeIn 0.3s; /* Animation when modal opens */
 }
 
-/* Modal content box */
 .modal-content {
   background-color: #fff; /* Modal background color */
   padding: 20px;
@@ -158,7 +156,6 @@ table {
   margin: auto;
 }
 
-/* Close button style */
 .close {
   background: none;
   border: none;
@@ -197,6 +194,16 @@ table {
   font-size: 1em;
   color: #666;
   line-height: 1.4;
+}
+
+.figure-hover {
+    background-color: #413c58;
+}
+
+.projects .project-grid .overlay.is-focused, 
+.projects .project-grid figcaption.is-focused {
+    opacity: 1;
+    transition: 0.45s ease-in-out;
 }
 
 /* Fade-in animation for the modal background */

@@ -1,3 +1,5 @@
+var lastFocusedButton = null;
+
 function trapFocusInModal(modal) {
     var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
     var focusableElements = modal.querySelectorAll(focusableElementsString);
@@ -57,10 +59,47 @@ function setupEscapeKeyClose() {
 document.addEventListener('DOMContentLoaded', function() {
     setupModalBackgroundListener();
     setupEscapeKeyClose();
+    var buttons = document.querySelectorAll('.project-grid button');
+
+    buttons.forEach(function(button) {
+        button.addEventListener('focus', function() {
+            this.closest('figure').classList.add('figure-hover');
+            var projectThumb = this.closest('figure').querySelector('.project-thumb');
+            if (projectThumb) {
+                projectThumb.style.display = 'none';
+            }
+            var figcaption = this.closest('figure').querySelector('figcaption');
+            var overlay = this.closest('figure').querySelector('.overlay');
+            if (figcaption) {
+                figcaption.classList.add('is-focused');
+            }
+            if (overlay) {
+                overlay.classList.add('is-focused');
+            }
+        });
+
+        button.addEventListener('blur', function() {
+            this.closest('figure').classList.remove('figure-hover');
+            var projectThumb = this.closest('figure').querySelector('.project-thumb');
+            if (projectThumb) {
+                projectThumb.style.display = '';
+            }
+            var figcaption = this.closest('figure').querySelector('figcaption');
+            var overlay = this.closest('figure').querySelector('.overlay');
+            if (figcaption) {
+                figcaption.classList.remove('is-focused');
+            }
+            if (overlay) {
+                overlay.classList.remove('is-focused');
+            }
+        });
+    });
 });
 
 
 function openModal(projectId) {
+    lastFocusedButton = document.activeElement; // Remember the button that opened the modal
+
     let content;
     switch (projectId) {
         case 1:
@@ -116,4 +155,7 @@ function updateModalContent(content) {
 
 function closeModal() {
     document.getElementById('myModal').style.display = "none";
+    if (lastFocusedButton) {
+        lastFocusedButton.focus();
+    }
 }
