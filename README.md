@@ -1,2 +1,2 @@
 # Portfolio
-https://james-arn.github.io/Portfolio/
+https://james-arn.github.io/portfolio/
