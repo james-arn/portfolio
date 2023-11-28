@@ -96,7 +96,7 @@
             <figure class="image is-3by2"><img class="project-thumb" src="images/MockUps/CoopThumbnail.jpg">
               <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">Co-op - Complex Booking Journey</h1>
-                <button id="readMoreBtn1" onclick="openModal(1)"
+                <button id="readMoreBtn1"
                   class="button is-primary is-outlined is-rounded  is-flex is-align-items-center">
                   <span>Read more</span>
                   <span class="icon">
@@ -117,7 +117,7 @@
             <figure class="image is-3by2"><img class="project-thumb" src="images/MockUps/IJOPowerThumbnail.jpg">
               <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">iJOPower - Solar Panel Configurator</h1>
-                <button id="readMoreBtn2" onclick="openModal(2)"
+                <button id="readMoreBtn2"
                   class="button is-primary is-outlined is-rounded  is-flex is-align-items-center">
                   <span>Read more</span>
                   <span class="icon"><svg class="svg-inline--fa fa-angle-right" height="18px" aria-hidden="true"
@@ -137,7 +137,7 @@
             <figure class="image is-3by2"><img class="project-thumb" src="images/MockUps/CAAThumbnail.jpg">
               <figcaption>
                 <h1 class="title is-size-5 is-size-4-widescreen">CAA - Full Accessibility </h1>
-                <button id="readMoreBtn3" onclick="openModal(3)"
+                <button id="readMoreBtn3"
                   class="button is-primary is-outlined is-rounded  is-flex is-align-items-center">
                   <span>Read more</span>
                   <span class="icon">
@@ -340,7 +340,7 @@
 
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <button class="close" onclick="closeModal()">&times;</button>
+      <button id="closeModalButton" class="close">&times;</button>
       <h2 id="modalTitle" class="modal-card-title">Project Title</h2>
 
       <div class="modal-section">
@@ -358,12 +358,11 @@
         <p id="modalOutcome" class="modal-section-content">Description of the outcome...</p>
       </div>
 
-      <a id="modalLink" href="" class="button is-primary">Visit Website</a>
+      <a id="modalLink" href="" class="button is-primary" target="_blank">Visit Website</a>
     </div>
   </div>
 
-
-  <script src="index.js"></script>
+  <script type="module" src="index.js"></script>
 </body>
 
 </html>
