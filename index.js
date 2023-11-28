@@ -1,12 +1,12 @@
-var lastFocusedButton = null;
+let lastFocusedButton = null;
 
 function trapFocusInModal(modal) {
-    var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-    var focusableElements = modal.querySelectorAll(focusableElementsString);
+    const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+    let focusableElements = modal.querySelectorAll(focusableElementsString);
     focusableElements = Array.prototype.slice.call(focusableElements);
 
-    var firstFocusableElement = focusableElements[0];
-    var lastFocusableElement = focusableElements[focusableElements.length - 1];
+    const firstFocusableElement = focusableElements[0];
+    const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
     function handleTabPress(e) {
         var isTabPressed = e.key === 'Tab' || e.keyCode === 9;
@@ -30,14 +30,14 @@ function trapFocusInModal(modal) {
 
     modal.addEventListener('keydown', handleTabPress);
 
-    setTimeout(function() {
-        lastFocusableElement.focus();
-    }, 100); 
+    setTimeout(function () {
+        firstFocusableElement.focus();
+    }, 100);
 }
 
 function setupModalBackgroundListener() {
     var modal = document.getElementById('myModal');
-    modal.addEventListener('click', function(event) {
+    modal.addEventListener('click', function (event) {
         if (event.target === modal) {
             closeModal();
         }
@@ -45,7 +45,7 @@ function setupModalBackgroundListener() {
 }
 
 function setupEscapeKeyClose() {
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
         if (event.key === 'Escape' || event.keyCode === 27) {
             // Check if the modal is currently displayed
             var modal = document.getElementById('myModal');
@@ -56,13 +56,11 @@ function setupEscapeKeyClose() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    setupModalBackgroundListener();
-    setupEscapeKeyClose();
-    var buttons = document.querySelectorAll('.project-grid button');
+const setupProjectTabFocusHover = () => {
+    const buttons = document.querySelectorAll('.project-grid button');
 
-    buttons.forEach(function(button) {
-        button.addEventListener('focus', function() {
+    buttons.forEach(function (button) {
+        button.addEventListener('focus', function () {
             this.closest('figure').classList.add('figure-hover');
             var projectThumb = this.closest('figure').querySelector('.project-thumb');
             if (projectThumb) {
@@ -78,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        button.addEventListener('blur', function() {
+        button.addEventListener('blur', function () {
             this.closest('figure').classList.remove('figure-hover');
             var projectThumb = this.closest('figure').querySelector('.project-thumb');
             if (projectThumb) {
@@ -94,6 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    setupModalBackgroundListener();
+    setupEscapeKeyClose();
+    setupProjectTabFocusHover();
 });
 
 
@@ -138,10 +142,13 @@ function openModal(projectId) {
                 link: "#"
             };
     }
+
     updateModalContent(content);
     const modal = document.getElementById('myModal');
     trapFocusInModal(modal);
     modal.style.display = "flex";
+    document.documentElement.style.overflowY = 'hidden';
+    document.documentElement.style.padding = '0px 6px 0px 0px';
 }
 
 function updateModalContent(content) {
@@ -154,6 +161,9 @@ function updateModalContent(content) {
 
 function closeModal() {
     document.getElementById('myModal').style.display = "none";
+    document.documentElement.style.overflowY = 'scroll';
+    document.documentElement.style.padding = '0px 0px 0px 0px';
+
     if (lastFocusedButton) {
         lastFocusedButton.focus();
     }
