@@ -1,3 +1,4 @@
+import setupCarousel from './component/carousel.js';
 import { openModal, closeModal } from './component/modal.js';
 import { setupModalBackgroundListener, setupEscapeKeyClose, setupProjectTabFocusHover } from './eventListeners.js';
 
@@ -5,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setupModalBackgroundListener();
     setupEscapeKeyClose();
     setupProjectTabFocusHover();
+    setupCarousel();
 
     // buttons or elements to trigger modals
     document.getElementById('readMoreBtn1').addEventListener('click', function () {

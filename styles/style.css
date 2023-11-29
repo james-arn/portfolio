@@ -126,6 +126,17 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+/* UTILITY CLASSES */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 .no-scroll {
   overflow: hidden; /* Prevents scrolling */
@@ -133,7 +144,19 @@ table {
   width: 100%; /* Full width */
 }
 
-/* MODAL STYLES */
+/* ACCESSIBILITY*/
+
+/* Fallback for browsers that don't support :focus-visible */
+:focus {
+  outline: 2px solid transparent; 
+}
+
+:focus-visible {
+  outline: 3px solid gold;
+  outline-offset: 1px;
+}
+
+/* MODAL */
 .modal {
   display: none; /* Hidden by default */
   position: fixed;
@@ -179,7 +202,6 @@ table {
 .close:hover,
 .close:focus {
   color: black;
-  outline: none;
 }
 
 .modal-card-title {
@@ -232,6 +254,39 @@ table {
   .navbar-menu {
     display: flex !important;
   }
+}
+
+/* Bulma overrides */
+.testimonials-slider {
+  cursor: grab;
+}
+
+.testimonials-slider:active {
+  cursor: grabbing;
+}
+
+.testimonials-slider:focus-within {
+  outline: 3px solid  gold;
+  outline-offset: 6px;
+}
+
+.carousel-item:focus-visible  {
+  outline: 0px;
+} 
+
+/* Override Bulma's default focus style for primary buttons */
+.button.is-primary:focus,
+.button.is-primary.is-focused {
+    box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
+}
+
+/* Ensure the focus style is visible on keyboard focus */
+.button.is-primary:focus-visible {
+    box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
+}
+
+.button:focus:not(:active), .button.is-focused:not(:active) {
+  box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
 }
 
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
