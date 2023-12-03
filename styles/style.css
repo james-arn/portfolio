@@ -273,14 +273,37 @@ table {
 
 
 .testimonials-slider .carousel-prev {
-  top: 20%;
-  left: 0px;
+  top: 22%;
+  left: calc(50% - 100px);
 }
 
 .testimonials-slider .carousel-next {
-  top: 20%;
-  right: 0px;
+  top: 22%;
+  right: calc(50% - 100px);
 }
+
+@media (max-width: 767px) {
+  .testimonials-slider .carousel-prev {
+    top: 18%;
+    left: calc(50% - 100px);
+  }
+  .testimonials-slider .carousel-next {
+    top: 18%;
+    right: calc(50% - 100px);
+  }
+}
+
+@media (max-width: 400px) {
+  .testimonials-slider .carousel-prev {
+    top: 16%;
+    left: calc(50% - 100px);
+  }
+  .testimonials-slider .carousel-next {
+    top: 16%;
+    right: calc(50% - 100px);
+  }
+}
+
 
 .testimonials-slider .carousel-arrow[disabled] {
   color: #cccccc; /* Grey out the icon for disabled state */
@@ -364,7 +387,7 @@ table {
   border: 3px solid transparent;
   border-radius: 2px;
   border-right: 0;
-  border-top: 0;
+border-top: 0;
   content: " ";
   display: block;
   height: 0.625em;
