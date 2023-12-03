@@ -256,7 +256,37 @@ table {
   }
 }
 
-/* Bulma overrides */
+/* CAROUSEL */
+.testimonials-slider .carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10; /* Make sure arrows are above the slides */
+  background: none; /* Optional: remove default button background */
+  border: none; /* Optional: remove default button border */
+  color: #00aaa8;
+}
+
+.testimonials-slider .carousel-arrow:hover {
+  color: #413c58;
+}
+
+
+.testimonials-slider .carousel-prev {
+  top: 20%;
+  left: 0px;
+}
+
+.testimonials-slider .carousel-next {
+  top: 20%;
+  right: 0px;
+}
+
+.testimonials-slider .carousel-arrow[disabled] {
+  color: #cccccc; /* Grey out the icon for disabled state */
+  cursor: default;
+}
+
 .testimonials-slider {
   cursor: grab;
 }

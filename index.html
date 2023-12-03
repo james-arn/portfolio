@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles/style.css">
   <title> James Arnold | Frontend Developer </title>
   <link href="images/logo_favicon.png" rel="shortcut icon" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
@@ -218,6 +219,11 @@
       <div class="columns is-centered">
         <div class="column is-two-thirds">
           <div class="testimonials-slider" role="region" aria-roledescription="carousel">
+            <button class="button carousel-arrow carousel-prev" aria-hidden tabindex="-1" disabled>
+              <span class="icon">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+            </button>
             <input id="carousel-1" type="radio" name="carousel" checked="">
             <input id="carousel-2" type="radio" name="carousel">
             <input id="carousel-3" type="radio" name="carousel">
@@ -288,6 +294,11 @@
               <label for="carousel-4"></label>
               <label for="carousel-5"></label>
             </div>
+            <button class="button carousel-arrow carousel-next" aria-hidden tabindex="-1">
+              <span class="icon">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </button>
           </div>
         </div>
       </div>
