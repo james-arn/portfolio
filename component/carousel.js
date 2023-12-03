@@ -1,122 +1,126 @@
 const setupCarousel = () => {
-    carouselSwipe();
-}
-
-function carouselSwipe() {
     const slider = document.querySelector('.testimonials-slider');
     const radioInputs = document.querySelectorAll('input[type="radio"][name="carousel"]');
     const carouselItems = document.querySelectorAll('.carousel-item');
     const prevButton = slider.querySelector('.carousel-prev');
     const nextButton = slider.querySelector('.carousel-next');
 
-    let startX, initialTouchPos;
     let currentSlide = 1;
-
+    let isTransitioning = false;
     const totalSlides = radioInputs.length;
 
-    const updateArrows = () => {
-        prevButton.disabled = currentSlide === 1;
-        nextButton.disabled = currentSlide === totalSlides;
-    };
+    initializeEventListeners();
+    updateArrows();
 
-    const goToSlide = (slideNumber) => {
-        console.log('gotoslidehit')
+    function debounce(func, delay) {
+        let timer;
+        return function () {
+            const context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(() => func.apply(context, args), delay);
+        };
+    }
+
+    function updateArrows() {
+        prevButton.disabled = currentSlide === 1 || isTransitioning;
+        nextButton.disabled = currentSlide === totalSlides || isTransitioning;
+    }
+
+    function goToSlide(slideNumber) {
+        if (isTransitioning) return;
+        isTransitioning = true;
         currentSlide = slideNumber;
         radioInputs[slideNumber - 1].checked = true;
         updateArrows();
-    };
 
-    const goToNextSlide = () => {
-        console.log('goToNextSlidehit')
+        setTimeout(() => {
+            isTransitioning = false;
+            updateArrows();
+        }, 200);
+    }
 
+    const goToNextSlide = debounce(() => {
         if (currentSlide < totalSlides) {
             goToSlide(currentSlide + 1);
         }
+    }, 100); // Debounce time
 
-    };
-
-    const goToPreviousSlide = () => {
+    const goToPreviousSlide = debounce(() => {
         if (currentSlide > 1) {
             goToSlide(currentSlide - 1);
         }
-    };
+    }, 100); // Debounce time
 
-    const updateCurrentSlideOnDrag = () => {
+    function updateCurrentSlideOnDrag() {
         radioInputs.forEach((input, index) => {
             if (input.checked) {
                 currentSlide = index + 1;
                 updateArrows();
             }
         });
-    };
+    }
 
-    const updateCarouselOnTab = (index) => {
-        console.log('tab')
-
+    function updateCarouselOnTab(index) {
         currentSlide = index + 1;
         radioInputs.forEach((radio, radioIndex) => {
             radio.checked = radioIndex === index;
         });
         updateArrows();
-    };
+    }
 
-    carouselItems.forEach((item, index) => {
-        item.addEventListener('focus', () => {
-            updateCarouselOnTab(index);
+    function initializeEventListeners() {
+        let startX, initialTouchPos;
+
+        carouselItems.forEach((item, index) => {
+            item.addEventListener('focus', () => updateCarouselOnTab(index));
         });
-    });
 
-    const handleGesture = () => {
-        // Check if the gesture was triggered by an arrow button click
-        console.log('gesture')
-        const change = startX - initialTouchPos;
+        radioInputs.forEach(input => {
+            input.addEventListener('change', updateCurrentSlideOnDrag);
+        });
 
-        if (change < -50 && currentSlide < totalSlides) {
-            goToNextSlide();
-        } else if (change > 50 && currentSlide > 1) {
+        const handleGesture = (e) => {
+            const change = startX - initialTouchPos;
+            if (change < -50 && currentSlide < totalSlides) {
+                goToNextSlide();
+            } else if (change > 50 && currentSlide > 1) {
+                goToPreviousSlide();
+            }
+        };
+
+        slider.addEventListener('touchstart', (e) => {
+            initialTouchPos = e.touches[0].pageX;
+        });
+
+        slider.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches.length === 1) {
+                startX = e.touches[0].pageX;
+            }
+        });
+
+        slider.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            initialTouchPos = e.pageX;
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (e.buttons === 1) {
+                startX = e.pageX;
+            }
+        });
+
+        slider.addEventListener('mouseup', handleGesture);
+
+        prevButton.addEventListener('click', (e) => {
+            e.stopPropagation();
             goToPreviousSlide();
-        }
-    };
+        }, { capture: true });
 
-    radioInputs.forEach(input => {
-        input.addEventListener('change', updateCurrentSlideOnDrag);
-    });
-
-    slider.addEventListener('touchstart', (e) => {
-        initialTouchPos = e.touches[0].pageX;
-    });
-
-    slider.addEventListener('touchmove', (e) => {
-        if (e.touches && e.touches.length === 1) {
-            startX = e.touches[0].pageX;
-        }
-    });
-
-    // slider.addEventListener('touchend', handleGesture);
-
-    slider.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        initialTouchPos = e.pageX;
-    });
-
-    slider.addEventListener('mousemove', (e) => {
-        if (e.buttons === 1) {
-            startX = e.pageX;
-        }
-    });
-
-    slider.addEventListener('mouseup', handleGesture);
-
-    // Event listeners for arrow buttons
-    prevButton.addEventListener('click', (e) => {
-        goToPreviousSlide();
-    });
-    nextButton.addEventListener('click', (e) => {
-        goToNextSlide();
-    });
-
-    // Initialize the arrows state
-    updateArrows();
+        nextButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            goToNextSlide();
+        }, { capture: true });
+    }
 }
 
 export default setupCarousel;
