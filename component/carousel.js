@@ -33,10 +33,16 @@ const setupCarousel = () => {
         radioInputs[slideNumber - 1].checked = true;
         updateArrows();
 
+        // Update ARIA live region with the content of the current slide
+        const liveRegion = document.getElementById('carousel-live-region');
+        const currentCarouselItem = carouselItems[slideNumber - 1];
+        liveRegion.textContent = currentCarouselItem.textContent || currentCarouselItem.innerText;
+
+
         setTimeout(() => {
             isTransitioning = false;
             updateArrows();
-        }, 200);
+        }, 100);
     }
 
     const goToNextSlide = debounce(() => {
@@ -60,20 +66,8 @@ const setupCarousel = () => {
         });
     }
 
-    function updateCarouselOnTab(index) {
-        currentSlide = index + 1;
-        radioInputs.forEach((radio, radioIndex) => {
-            radio.checked = radioIndex === index;
-        });
-        updateArrows();
-    }
-
     function initializeEventListeners() {
         let startX, initialTouchPos;
-
-        carouselItems.forEach((item, index) => {
-            item.addEventListener('focus', () => updateCarouselOnTab(index));
-        });
 
         radioInputs.forEach(input => {
             input.addEventListener('change', updateCurrentSlideOnDrag);

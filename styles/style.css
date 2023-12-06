@@ -145,15 +145,14 @@ table {
 }
 
 /* ACCESSIBILITY*/
+:focus-visible {
+  outline: 3px solid gold;
+  outline-offset: 1px;
+}
 
 /* Fallback for browsers that don't support :focus-visible */
 :focus {
   outline: 2px solid transparent; 
-}
-
-:focus-visible {
-  outline: 3px solid gold;
-  outline-offset: 1px;
 }
 
 /* MODAL */
@@ -238,6 +237,7 @@ table {
     transition: 0.45s ease-in-out;
 }
 
+
 /* Fade-in animation for the modal background */
 @keyframes fadeIn {
   from {opacity: 0;}
@@ -291,7 +291,25 @@ table {
   outline: 0px;
 } 
 
-/* Override Bulma's default focus style for primary buttons */
+/* Focus style for the logo link */
+.logo-link:focus-visible {
+  outline: 3px solid gold;
+  outline-offset: 2px;
+}
+
+/* Ensure the logo image doesn't disrupt the focus outline */
+.logo-link img {
+  display: block; /* Or other styles as needed */
+}
+
+/* Override Bulma's default focus style */
+/* Input, Textarea, and Button Focus Styles */
+.input:focus-visible,
+.textarea:focus-visible,
+.button:focus-visible {
+  outline: 3px solid #FFD700 !important;
+}
+
 .button.is-primary:focus,
 .button.is-primary.is-focused {
     box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
@@ -305,6 +323,7 @@ table {
 .button:focus:not(:active), .button.is-focused:not(:active) {
   box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
 }
+
 
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {

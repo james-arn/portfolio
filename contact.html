@@ -17,14 +17,15 @@
   <nav class="navbar is-transparent is-planner animate-fadeDown">
     <div class="container is-flex is-justify-content-space-between is-align-items-center px-5">
       <!-- Logo -->
-      <a href="index.html" style="height: 48px">
-        <img src="images/logo_favicon.png" alt="James Arnold | Frontend Developer" height="48px">
+      <a href="index.html" class="logo-link" style="height: 48px">
+        <img src="images/logo_favicon.png" alt="James Arnold Logo, back to home page" height="48px">
       </a>
       <!-- Close Button -->
       <div class="navbar-end">
         <div class="navbar-item">
           <p class="buttons">
-            <a class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close" href="index.html">
+            <a class="button is-medium tooltip is-tooltip-bottom" data-tooltip="Close" href="index.html"
+              aria-label="Back to home page">
               <span class="icon is-small">
                 <svg class="svg-inline--fa fa-times fa-w-12" aria-hidden="true" data-prefix="fas" data-icon="times"
                   role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -57,17 +58,17 @@
           <div class="columns is-centered">
             <div class="column is-half">
               <div class="field">
-                <label class="label">Name</label>
+                <label class="label" for="name">Name</label>
                 <div class="control is-expanded">
-                  <input class="input is-large" name="name" type="text" required="">
+                  <input class="input is-large" id="name" name="name" type="text" required="">
                 </div>
               </div>
             </div>
             <div class="column is-half">
               <div class="field">
-                <label class="label">Email</label>
+                <label class="label" for="email">Email</label>
                 <div class="control is-expanded">
-                  <input class="input is-large" name="email" type="email" required="">
+                  <input class="input is-large" id="email" name="email" type="email" required="">
                 </div>
               </div>
             </div>
@@ -75,19 +76,14 @@
           <div class="columns is-centered">
             <div class="column">
               <div class="field">
-                <label class="label">Message</label>
+                <label class="label" for="message">Message</label>
                 <div class="control is-expanded">
-                  <textarea class="textarea is-large" name="message" rows="5" required=""></textarea>
-                </div>
-              </div>
-              <div class="field is-hidden">
-                <label class="is-hidden"></label>
-                <div class="control is-expanded is-hidden">
-                  <input class="is-hidden" name="" type="hidden">
+                  <textarea class="textarea is-large" id="message" name="message" rows="5" required=""></textarea>
                 </div>
               </div>
             </div>
           </div>
+
           <div class="columns is-centered">
             <div class="column is-one-third">
               <div class="field">
