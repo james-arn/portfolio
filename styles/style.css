@@ -258,52 +258,16 @@ table {
 
 /* CAROUSEL */
 .testimonials-slider .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10; /* Make sure arrows are above the slides */
-  background: none; /* Optional: remove default button background */
-  border: none; /* Optional: remove default button border */
+  transform: translateY(-25%);
+  z-index: 10;
+  background: none;
+  border: none; 
   color: #00aaa8;
 }
 
 .testimonials-slider .carousel-arrow:hover {
   color: #413c58;
 }
-
-
-.testimonials-slider .carousel-prev {
-  top: 22%;
-  left: calc(50% - 100px);
-}
-
-.testimonials-slider .carousel-next {
-  top: 22%;
-  right: calc(50% - 100px);
-}
-
-@media (max-width: 767px) {
-  .testimonials-slider .carousel-prev {
-    top: 18%;
-    left: calc(50% - 100px);
-  }
-  .testimonials-slider .carousel-next {
-    top: 18%;
-    right: calc(50% - 100px);
-  }
-}
-
-@media (max-width: 400px) {
-  .testimonials-slider .carousel-prev {
-    top: 16%;
-    left: calc(50% - 100px);
-  }
-  .testimonials-slider .carousel-next {
-    top: 16%;
-    right: calc(50% - 100px);
-  }
-}
-
 
 .testimonials-slider .carousel-arrow[disabled] {
   color: #cccccc; /* Grey out the icon for disabled state */

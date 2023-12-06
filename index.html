@@ -219,11 +219,6 @@
       <div class="columns is-centered">
         <div class="column is-two-thirds">
           <div class="testimonials-slider" role="region" aria-roledescription="carousel">
-            <button class="button carousel-arrow carousel-prev" aria-hidden tabindex="-1" disabled>
-              <span class="icon">
-                <i class="fas fa-chevron-left"></i>
-              </span>
-            </button>
             <input id="carousel-1" type="radio" name="carousel" checked="">
             <input id="carousel-2" type="radio" name="carousel">
             <input id="carousel-3" type="radio" name="carousel">
@@ -288,17 +283,23 @@
               </div>
             </div>
             <div class="carousel-nav">
+              <button class="button carousel-arrow carousel-prev" aria-hidden tabindex="-1" disabled>
+                <span class="icon">
+                  <i class="fas fa-chevron-left"></i>
+                </span>
+              </button>
               <label for="carousel-1"></label>
               <label for="carousel-2"></label>
               <label for="carousel-3"></label>
               <label for="carousel-4"></label>
               <label for="carousel-5"></label>
+              <button class="button carousel-arrow carousel-next" aria-hidden tabindex="-1">
+                <span class="icon">
+                  <i class="fas fa-chevron-right"></i>
+                </span>
+              </button>
             </div>
-            <button class="button carousel-arrow carousel-next" aria-hidden tabindex="-1">
-              <span class="icon">
-                <i class="fas fa-chevron-right"></i>
-              </span>
-            </button>
+
           </div>
         </div>
       </div>
