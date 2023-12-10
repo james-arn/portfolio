@@ -1,5 +1,4 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
-@import url("https://use.typekit.net/ojv4ekx.css");
 a,
 abbr,
 acronym,
@@ -126,6 +125,27 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+.client-logo {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.image.is-2x1 {
+  position: relative;
+  width: 100%;
+  padding-top: 50%; /* 2:1 aspect ratio (height is 50% of width) */
+}
+
+.image.is-2x1 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
 /* UTILITY CLASSES */
 .visually-hidden {
   position: absolute;
@@ -299,7 +319,9 @@ table {
 
 /* Ensure the logo image doesn't disrupt the focus outline */
 .logo-link img {
-  display: block; /* Or other styles as needed */
+  display: block; 
+  height: 48px;
+  width: 52px;
 }
 
 /* Override Bulma's default focus style */
@@ -307,7 +329,7 @@ table {
 .input:focus-visible,
 .textarea:focus-visible,
 .button:focus-visible {
-  outline: 3px solid #FFD700 !important;
+  outline: 3px solid gold !important;
 }
 
 .button.is-primary:focus,
@@ -322,6 +344,21 @@ table {
 
 .button:focus:not(:active), .button.is-focused:not(:active) {
   box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
+}
+
+/* Add this to your style.css */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in-scroll {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  will-change: opacity, transform; /* Optimizes the animation */
 }
 
 
@@ -772,7 +809,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "europa", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 code,
@@ -12520,7 +12557,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "eurostile", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
 }
 
@@ -12530,7 +12567,7 @@ h6 {
 .content h4,
 .content h5,
 .content h6 {
-  font-family: "eurostile", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 800;
   color: #141c3a;
 }
@@ -12556,7 +12593,7 @@ h6 {
 }
 
 .subtitle {
-  font-family: "europa", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   line-height: 1.5;
 }
@@ -12577,7 +12614,7 @@ a:hover {
 }
 
 .button {
-  font-family: "europa", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .button.is-clear {
@@ -12720,18 +12757,26 @@ hr {
 }
 
 .hero.is-white .title {
-  color: ##141c3a;
+  color: #141c3a;
 }
 
 .avatar {
   margin: 2rem 0;
   width: 150px;
+  height: 156px;
 }
 
 @media screen and (min-width: 769px) {
   .avatar {
     width: 210px;
+    height: 220px;
   }
+}
+
+.avatar-contact {
+  width: 84px;
+  margin: -50px auto 50px;
+  z-index: 10;
 }
 
 .hero-foot {
@@ -12740,12 +12785,16 @@ hr {
 
 .hero-foot img.is-bottom {
   margin-bottom: -0.4rem;
+  width: 100%; 
+  height: auto;
+  aspect-ratio: 860 / 265;
 }
 
 @media screen and (min-width: 769px) {
   .hero-foot img.is-bottom {
     margin-bottom: -0.45rem;
-    max-width: 860px;
+    width: 860px;
+    height: 265px;
   }
 }
 
@@ -12887,7 +12936,7 @@ hr {
 
 .section.skills .box .content .columns .column figure.image img.is-skill-icon {
   height: 48px;
-  width: auto;
+  width: 48px;
 }
 
 @media screen and (min-width: 769px) {
@@ -13115,19 +13164,21 @@ hr {
 .section.testimonials .testimonial-block img.avatar {
   margin: 2.5rem auto 2rem;
   max-width: 96px;
-  height: auto;
+  height: 96px;
   border-radius: 100px;
 }
 
 @media screen and (min-width: 769px) {
   .section.testimonials .testimonial-block img.avatar {
     margin: 4rem auto 2rem;
+    height: 96px;
+    weight: 96px;
   }
 }
 
 .section.testimonials .testimonial-block p.quote {
   font-size: 20px;
-  font-family: "eurostile", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   max-width: 700px;
   margin: 0 auto 2.5rem;
@@ -13310,7 +13361,7 @@ footer .made-by-bulma {
 
 .is-form-page .container form label.label {
   font-weight: 400;
-  font-family: "eurostile", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
   color: rgba(41, 51, 71, 0.65);
 }

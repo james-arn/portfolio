@@ -4,16 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles/style.css">
+  <meta name="description"
+    content="James Arnold - Experienced Frontend Developer specialising in building scalable, high-performing web applications. Expertise in React, Next.js, and WCAG accessibility standards. Proven track record in complex project delivery for award-winning agencies and global clients. Open to freelance, contract or permanent jobs">
+  <link rel=" stylesheet" href="styles/style.css">
   <title> James Arnold | Frontend Developer </title>
   <link href="images/logo_favicon.png" rel="shortcut icon" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  </noscript>
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  </noscript>
+  <link rel="preload" as="image" href="images/jamesiconsvg.svg">
+  <link rel="preload" as="image" href="images/hero_footer.svg">
 </head>
 
 <body>
   <nav class="navbar is-transparent  px-5" role="navigation" aria-label="main navigation">
     <div class="container is-flex is-justify-content-space-between is-align-items-center">
-      <a href="/index.html" class="logo-link" style="height: 48px">
+      <a href="/index.html" class="logo-link">
         <img src="images/logo_favicon.png" alt="James Arnold | Frontend Developer" height="48px" />
       </a>
       <a class="button is-primary is-outlined is-rounded" href="contact.html">
@@ -36,7 +51,9 @@
       </div>
     </div>
     <div class="hero-foot">
-      <div class="container"><img class="is-bottom" src="images/hero_footer.svg" alt="Digital tools" /></div>
+      <div class="container"><img class="hero-foot-digital-tools is-bottom" src="images/hero_footer.svg"
+          alt="Digital tools" />
+      </div>
     </div>
   </section>
   <section class="section is-medium is-primary has-text-centered is-long">
@@ -339,22 +356,32 @@
         </div>
       </div>
       <div class="social-icons">
-        <p class="field"></a><a class="button is-medium" href="https://www.linkedin.com/in/jamesarnoldsays/"
-            target="_blank"><span class="icon is-small"><svg class="svg-inline--fa fa-linkedin-in fa-fw"
-                aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" role="img"
-                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+        <p class="field">
+          <a class="button is-medium" href="https://www.linkedin.com/in/jamesarnoldsays/"
+            aria-label="Visit my LinkedIn profile" target="_blank">
+            <span class="icon is-small">
+              <svg class="svg-inline--fa fa-linkedin-in fa-fw" aria-hidden="true" focusable="false" data-prefix="fab"
+                data-icon="linkedin-in" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
+                data-fa-i2svg="">
+                <title>LinkedIn</title>
                 <path fill="currentColor"
                   d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
                 </path>
-              </svg><!-- <i class="fab fa-linkedin-in fa-fw"></i> --></span></a><a class="button is-medium"
-            href="mailto:j1mes@hotmail.co.uk" target="_blank"><span class="icon is-small"><svg
-                class="svg-inline--fa fa-envelope fa-fw" aria-hidden="true" focusable="false" data-prefix="far"
+              </svg><!-- <i class="fab fa-linkedin-in fa-fw"></i> -->
+            </span>
+          </a>
+          <a class="button is-medium" href="mailto:j1mes@hotmail.co.uk" target="_blank" aria-label="Email me"><span
+              class="icon is-small">
+              <svg class="svg-inline--fa fa-envelope fa-fw" aria-hidden="true" focusable="false" data-prefix="far"
                 data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                 data-fa-i2svg="">
+                <title>Email me</title>
                 <path fill="currentColor"
                   d="M448 64H64C28.65 64 0 92.65 0 128v256c0 35.35 28.65 64 64 64h384c35.35 0 64-28.65 64-64V128C512 92.65 483.3 64 448 64zM64 112h384c8.822 0 16 7.178 16 16v22.16l-166.8 138.1c-23.19 19.28-59.34 19.27-82.47 .0156L48 150.2V128C48 119.2 55.18 112 64 112zM448 400H64c-8.822 0-16-7.178-16-16V212.7l136.1 113.4C204.3 342.8 229.8 352 256 352s51.75-9.188 71.97-25.98L464 212.7V384C464 392.8 456.8 400 448 400z">
                 </path>
-              </svg><!-- <i class="far fa-envelope fa-fw"></i> --></span></a></p>
+              </svg><!-- <i class="far fa-envelope fa-fw"></i> --></span>
+          </a>
+        </p>
       </div>
     </div>
   </footer>
