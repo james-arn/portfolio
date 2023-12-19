@@ -346,21 +346,27 @@ table {
   box-shadow: 0 0 0 3px gold !important; /* Mimic a 3px solid gold outline */
 }
 
-/* Add this to your style.css */
+/* ANIMATION */
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-.fade-in-scroll {
+.js-enabled .fade-in-scroll {
   opacity: 0;
-  animation-name: fadeIn;
-  animation-fill-mode: forwards;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  will-change: opacity, transform; /* Optimizes the animation */
+  transform: translateY(20px); 
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+.js-enabled .fade-in-scroll.active {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Return to original position */
+}
+.button:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
 
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
@@ -13814,4 +13820,3 @@ input[name="carousel"] {
 .grecaptcha-badge {
   display: none;
 }
-/*# sourceMappingURL=main.css.map */
