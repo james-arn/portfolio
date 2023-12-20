@@ -14,7 +14,26 @@ export const revealSection = () => {
     });
 };
 
+const typeHeading = () => {
+    const element = document.querySelector('.typing-effect');
+      const fullText = element.textContent;
+      element.textContent = '';
+    
+      let charIndex = 0;
+      const typingDelay = 40; // Adjust typing speed
+    
+      function typeCharacter() {
+        if (charIndex < fullText.length) {
+          element.textContent += fullText[charIndex];
+          charIndex++;
+          setTimeout(typeCharacter, typingDelay);
+        }
+      }
+      typeCharacter();
+}
+
 export function setupAnimations() {
     window.addEventListener('scroll', revealSection);
     revealSection(); // Initialize reveal function to check initially visible elements
+    typeHeading();
 }

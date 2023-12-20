@@ -170,11 +170,6 @@ table {
   outline-offset: 1px;
 }
 
-/* Fallback for browsers that don't support :focus-visible */
-:focus {
-  outline: 2px solid transparent; 
-}
-
 /* MODAL */
 .modal {
   display: none; /* Hidden by default */
@@ -257,12 +252,52 @@ table {
     transition: 0.45s ease-in-out;
 }
 
+/* ANIMATIONS */
+/* typing */
+.typing-effect:after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  font-weight: 50;
+  font-size: 1em;
+  opacity: 1;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Subtitle fade in */
+.subtitle-animated {
+  opacity: 0; 
+  animation: fadeInAndDown 1s ease-out forwards;
+  animation-delay: 4s; /* Delay after headline typing animation */
+}
+
+@keyframes fadeInAndDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* avatar pop up animation */
+.avatar-animated {
+  opacity: 0;
+  transform: scale(0);
+  animation: popUpAndBounce 1s ease-out forwards;
+  animation-delay: 6s; /* Delay after subheadline animation */
+}
+
+@keyframes popUpAndBounce {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); }
+  0% { transform: scale(0); opacity: 0; }
+}
 
 /* Fade-in animation for the modal background */
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
 }
+
 
 /* Scale-up animation for the modal content */
 @keyframes scaleUp {
@@ -362,10 +397,6 @@ table {
 .js-enabled .fade-in-scroll.active {
   opacity: 1; /* Fully visible */
   transform: translateY(0); /* Return to original position */
-}
-.button:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
 }
 
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
