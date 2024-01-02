@@ -20,7 +20,7 @@ const typeHeading = () => {
       element.textContent = '';
     
       let charIndex = 0;
-      const typingDelay = 40; // Adjust typing speed
+      const typingDelay = 30; // Adjust typing speed
     
       function typeCharacter() {
         if (charIndex < fullText.length) {
@@ -29,8 +29,8 @@ const typeHeading = () => {
           setTimeout(typeCharacter, typingDelay);
         }
       }
-      typeCharacter();
-}
+      setTimeout(typeCharacter, 1000); // delay before starting
+    }
 
 export function setupAnimations() {
     window.addEventListener('scroll', revealSection);
