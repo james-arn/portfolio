@@ -254,18 +254,19 @@ table {
 
 /* ANIMATIONS */
 /* typing */
-.typing-effect {
+.title-container {
   min-height: 108px;
+  margin-bottom: 1.5rem;
 }
 
 @media screen and (min-width: 401px) {
-  .typing-effect {
+  .title-container {
     min-height: 72px;
   }
 }
 
 @media screen and (min-width: 631px) {
-  .typing-effect {
+  .title-container {
     min-height: 36px;
   }
 }
@@ -276,6 +277,12 @@ table {
   font-weight: 50;
   font-size: 1em;
   opacity: 1;
+}
+
+.typing-effect-static {
+  opacity: 0; 
+  animation: fadeInAndDown 1s ease-out forwards;
+  animation-delay: 1s; /* Delay after headline typing animation */
 }
 
 @keyframes blink {
