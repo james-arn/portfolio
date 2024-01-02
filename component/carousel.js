@@ -84,13 +84,13 @@ const setupCarousel = () => {
 
         slider.addEventListener('touchstart', (e) => {
             initialTouchPos = e.touches[0].pageX;
-        });
+        }, { passive: true });
 
         slider.addEventListener('touchmove', (e) => {
             if (e.touches && e.touches.length === 1) {
-                startX = e.touches[0].pageX;
+                startX = e.touches[0].pageX;    
             }
-        });
+        }, { passive: true });
 
         slider.addEventListener('mousedown', (e) => {
             e.preventDefault();
@@ -101,9 +101,11 @@ const setupCarousel = () => {
             if (e.buttons === 1) {
                 startX = e.pageX;
             }
-        });
+        }, { passive: true });
 
         slider.addEventListener('mouseup', handleGesture);
+
+        slider.addEventListener('touchend', handleGesture, { passive: true });
 
         prevButton.addEventListener('click', (e) => {
             e.stopPropagation();
