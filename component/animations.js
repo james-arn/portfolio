@@ -16,9 +16,6 @@ export const revealSection = () => {
 
 const typeHeading = () => {
     const element = document.querySelector('.typing-effect');
-    element.style.display = 'block';
-    element.setAttribute('aria-hidden', 'false'); 
-
       const fullText = element.textContent;
       element.textContent = '';
     
