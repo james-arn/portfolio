@@ -256,6 +256,9 @@ table {
 /* typing */
 .typing-effect {
   min-height: 108px;
+  opacity: 0; 
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 1s;
 }
 
 @media screen and (min-width: 401px) {
@@ -417,7 +420,12 @@ table {
 
 /* CHATBOT - custom */
 flowise-chatbot {
-  font-weight: 400 !important; 
+  font-weight: 400;
+};
+
+flowise-chatbot div[part="bot"]{
+  right: 0 !important;
+  background-color: red !important; /* For visibility testing */
 }
 
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
