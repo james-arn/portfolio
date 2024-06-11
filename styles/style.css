@@ -415,6 +415,11 @@ table {
   transform: translateY(0); /* Return to original position */
 }
 
+/* CHATBOT - custom */
+flowise-chatbot {
+  font-weight: 400 !important; 
+}
+
 /*! bulma.io v0.8.0 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
@@ -13867,3 +13872,4 @@ input[name="carousel"] {
 .grecaptcha-badge {
   display: none;
 }
+
