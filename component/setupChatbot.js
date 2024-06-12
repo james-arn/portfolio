@@ -1,3 +1,7 @@
+import { 
+    FLOWISE_CHATBOT_CLASS, FLOWISE_CHAT_CONTAINER_CLASS, FLOWISE_OUTER_BUTTON_CLASS 
+} from "../utils/consts.js";
+
 export function setUpChatbot(chatflowid, apiHost, chatbotTheme) {
     document.documentElement.classList.add('js-enabled');
 
@@ -9,28 +13,42 @@ export function setUpChatbot(chatflowid, apiHost, chatbotTheme) {
             theme: chatbotTheme
         });
 
-        // Function to apply custom styles
         function applyCustomStyles() {
-            const flowiseChatbot = document.querySelector('flowise-chatbot');
+            const flowiseChatbot = document.querySelector(FLOWISE_CHATBOT_CLASS);
             if (flowiseChatbot && flowiseChatbot.shadowRoot) {
-                const botElement = flowiseChatbot.shadowRoot.querySelector('div[part="bot"]');
+                const botElement = flowiseChatbot.shadowRoot.querySelector(FLOWISE_CHAT_CONTAINER_CLASS);
                 if (botElement) {
                     botElement.style.right = '0';
                 }
             }
         }
 
-        // Use MutationObserver to watch for the bot element
+        function openChatbot() {
+            const chatbotButton = document.querySelector(FLOWISE_CHATBOT_CLASS);
+            if (chatbotButton && chatbotButton.shadowRoot) {
+                const button = chatbotButton.shadowRoot.querySelector("button");
+                if (button) {
+                    button.click();
+                }
+            }
+        }
+
+        // Attach click event to the chatbot prompt
+        const chatPrompt = document.querySelector(".chatbot_helperTextbox_container");
+        if (chatPrompt) {
+            chatPrompt.addEventListener("click", openChatbot);
+        }
+
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach(node => {
-                    if (node.nodeType === 1 && node.matches('flowise-chatbot')) {
+                    if (node.nodeType === 1 && node.matches(FLOWISE_CHATBOT_CLASS)) {
                         applyCustomStyles();
                         if (node.shadowRoot) {
                             const shadowObserver = new MutationObserver((shadowMutations) => {
                                 shadowMutations.forEach((shadowMutation) => {
                                     shadowMutation.addedNodes.forEach(shadowNode => {
-                                        if (shadowNode.nodeType === 1 && shadowNode.matches('div[part="bot"]')) {
+                                        if (shadowNode.nodeType === 1 && shadowNode.matches(FLOWISE_CHAT_CONTAINER_CLASS)) {
                                             applyCustomStyles();
                                         }
                                     });
