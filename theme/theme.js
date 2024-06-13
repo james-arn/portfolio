@@ -6,13 +6,13 @@ const BRAND_COLOURS = {
 
 export const chatbotTheme = {
     button: {
-      backgroundColor: BRAND_COLOURS.SECONDARY,
+      backgroundColor: '',
     //   right: 20,
     //   bottom: 20,
       size: 86, // small | medium | large | number
-      dragAndDrop: true,
+      dragAndDrop: false,
       iconColor: "white",
-    //   customIconSrc: "https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg",
+      customIconSrc: "https://github.com/james-arn/portfolio/blob/main/images/headshot-crop-light-blue.png?raw=true",
     },
     chatWindow: {
       showTitle: true,

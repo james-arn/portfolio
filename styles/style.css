@@ -302,19 +302,24 @@ table {
   opacity: 0;
   transform: scale(0);
   animation: popUpAndBounce 1s ease-out forwards;
-  animation-delay: 6s; /* Delay after subheadline animation */
+  animation-delay: 6s; 
 }
 
 @keyframes popUpAndBounce {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); }
-  0% { transform: scale(0); opacity: 0; }
-}
-
-/* Fade-in animation for the modal background */
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  0% {
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none; 
+  }
+  50% {
+    transform: scale(1.2);
+    pointer-events: none; 
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 
@@ -403,10 +408,9 @@ table {
 /* ANIMATION */
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
-
 .js-enabled .fade-in-scroll {
   opacity: 0;
   transform: translateY(20px); 
@@ -436,7 +440,19 @@ flowise-chatbot {
   border-radius: 16px;
   cursor: pointer;
   box-shadow: 0 0 14px rgba(0,0,0,.2);
+  transition-duration: .2s;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  animation: popUpAndBounce 1s ease-out 2s forwards;
+  animation-delay: 10s;
+  opacity: 0; 
+  pointer-events: none;
 }
+
+  @media (max-width: 340px) {
+    .chatbot_helperTextbox_container {
+      display: none; /* Hide the element when the viewport is 340px wide or less */
+    }
+  }
 
 .chatbot_helperTextbox_prompt {
   font-size: 16px;
