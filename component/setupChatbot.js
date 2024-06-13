@@ -2,21 +2,6 @@ import {
     FLOWISE_CHATBOT_ELEMENT, FLOWISE_CHAT_CONTAINER_CLASS, FLOWISE_OUTER_BUTTON_CLASS 
 } from "../utils/consts.js";
 
-
-function fadeIn(element, duration) {
-    let start = null;
-    function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const opacity = Math.min(progress / duration, 1);
-        element.style.opacity = opacity.toString();
-        if (progress < duration) {
-            window.requestAnimationFrame(step);
-        }
-    }
-    window.requestAnimationFrame(step);
-}
-
 export function setUpChatbot(chatflowid, apiHost, chatbotTheme) {
     document.documentElement.classList.add('js-enabled');
 
@@ -38,13 +23,12 @@ export function setUpChatbot(chatflowid, apiHost, chatbotTheme) {
                 const buttonElement = flowiseChatbot.shadowRoot.querySelector(FLOWISE_OUTER_BUTTON_CLASS);
                 if (buttonElement) {
                     buttonElement.style.boxShadow = 'none';
+                    buttonElement.style.animation = 'none'
                 }
                 const imageElement = flowiseChatbot.shadowRoot.querySelector('img[alt="Bubble button icon"]');
                 if (imageElement) {
                     imageElement.style.width = '100%';
                     imageElement.style.height = '100%';
-                    imageElement.style.opacity = '0'; 
-                    fadeIn(imageElement, 1000); 
                 }
             }
         }

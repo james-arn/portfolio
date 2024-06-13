@@ -6,7 +6,7 @@ const BRAND_COLOURS = {
 
 export const chatbotTheme = {
     button: {
-      backgroundColor: '',
+      backgroundColor: BRAND_COLOURS.SECONDARY,
     //   right: 20,
     //   bottom: 20,
       size: 86, // small | medium | large | number
