@@ -8,5 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setUpModal();
     setupCarousel();
     setupAnimations();
-    setUpChatbot("e761d2f6-af46-43a7-baf7-f5e54c1bd0fe", "https://flowise-ibs6.onrender.com", chatbotTheme);
+    // Disabled as do not want to use for now.
+    // setUpChatbot("e761d2f6-af46-43a7-baf7-f5e54c1bd0fe", "https://flowise-ibs6.onrender.com", chatbotTheme);
 });
